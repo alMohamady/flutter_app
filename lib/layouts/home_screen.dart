@@ -10,12 +10,14 @@ class HomeScreen extends StatelessWidget {
        child:  Container(
             alignment: Alignment.center,
             color: Colors.yellow,
-            width: 200,
-            height: 200,
-            //margin: EdgeInsets.only(left: 30, top: 20),
-            padding: EdgeInsets.all(50),
-            child: Text("Hi Flutter", textDirection: TextDirection.ltr,
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            child: Text("Hi Flutter",
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 70,
+                fontFamily: "Arimo",
+                fontWeight: FontWeight.w700,
+              ),
             )
         )
     );
