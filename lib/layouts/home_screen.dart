@@ -72,10 +72,22 @@ class HomeScreen extends StatelessWidget {
                            )
                        )
                      ]
-                 )
+                 ),
+                 MyImage()
                ]
             )
         )
     );
+  }
+}
+
+class MyImage extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    AssetImage image = new AssetImage('images/mario.png');
+    Image myImg = new Image(image: image, width: 200, height: 100,);
+    return Container(child: myImg,);
   }
 }
