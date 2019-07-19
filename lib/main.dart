@@ -18,7 +18,9 @@ void main() {
       MaterialApp(
           title: "My List View",
           home: Scaffold(
-            body: myListView(),
+            appBar: AppBar(title: Text("The big List")),
+            body: myBigList(),
+
           )
       )
   );
@@ -50,6 +52,32 @@ Widget myListView() {
     ],
   );
   return list;
+}
+
+
+List<String> getDataSource() {
+
+  var items = List<String>.generate(1000, (i) => "item ${i + 1} ");
+  return items;
+}
+
+Widget myBigList() {
+
+  var items = getDataSource();
+
+  var listView = ListView.builder(
+      itemBuilder: (context, i) {
+
+        return ListTile (
+          leading: Icon(Icons.ac_unit),
+            title: Text(items[i]),
+            subtitle: Text("bla bla bla ........"),
+          onTap: () { debugPrint("list num# ${items[i]}"); },
+        );
+      }
+  );
+
+  return listView;
 }
 
 
