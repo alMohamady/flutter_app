@@ -20,7 +20,13 @@ void main() {
           home: Scaffold(
             appBar: AppBar(title: Text("The big List")),
             body: myBigList(),
-
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                debugPrint("Add new item");
+              },
+              child: Icon(Icons.add),
+              tooltip: "add new item",
+            ),
           )
       )
   );
@@ -72,7 +78,9 @@ Widget myBigList() {
           leading: Icon(Icons.ac_unit),
             title: Text(items[i]),
             subtitle: Text("bla bla bla ........"),
-          onTap: () { debugPrint("list num# ${items[i]}"); },
+          onTap: () {
+            showBar(context , "list num# ${items[i]}");
+            },
         );
       }
   );
@@ -80,6 +88,31 @@ Widget myBigList() {
   return listView;
 }
 
+void showBar(BuildContext context, String msg) {
+  var bar = SnackBar(
+    content: Text(msg),
+    action: SnackBarAction(label: "UNDO", onPressed: () {
+      onClick(context);
+    }),
+  ) ;
+
+  Scaffold.of(context).showSnackBar(bar);
+}
+
+void onClick(BuildContext context){
+
+  AlertDialog alertDialog = AlertDialog(
+    title: Text("UNDO"),
+    content: Text("UNDO THE OPERTION :)"),
+  );
+
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alertDialog;
+      }
+  );
+}
 
 
 
