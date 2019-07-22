@@ -116,6 +116,8 @@ class StudentsNames extends StatefulWidget {
 class _StudentsNames extends State<StudentsNames> {
 
   String student;
+  var languages = ["C++", "C#", "Java", "Dart", "Select One"];
+  var selectedLang = "Select One";
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +138,22 @@ class _StudentsNames extends State<StudentsNames> {
               Padding(
                 padding:  EdgeInsets.all(30),
                 child:  Text("the Student is : $student")
-              )
+              ),
+             DropdownButton<String> (
+               items: languages.map((String selectItem) {
+                 return DropdownMenuItem<String> (
+                   value: selectItem,
+                   child: Text(selectItem),
+                 );
+               }
+               ).toList(),
+               onChanged: (String theLang) {
+                 setState(() {
+                   selectedLang = theLang;
+                 });
+               },
+               value: selectedLang,
+             )
             ],
           )
       )
